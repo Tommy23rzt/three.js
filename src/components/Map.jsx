@@ -6,6 +6,7 @@ import {
   Annotation,
   ZoomableGroup
 } from "react-simple-maps";
+import { asset } from "../assets";
 
 const Map = () => {
   return (
@@ -19,7 +20,7 @@ const Map = () => {
       style={{width:"100%", height:"100%"}}
     >
       <Geographies
-        geography="/features.json"
+        geography={asset("features.json")}
         fill="#2C065D"
         stroke="#FFFFFF"
         strokeWidth={0.5}

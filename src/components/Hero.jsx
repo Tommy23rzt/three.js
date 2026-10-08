@@ -5,7 +5,8 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
@@ -13,14 +14,16 @@ const Section = styled.div`
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
-    height: 200vh;
+    min-height: 200vh;
   }
 `;
 
 const Container = styled.div`
-  height: 100%;
+  flex: 1;
   scroll-snap-align: center;
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
 
@@ -48,6 +51,10 @@ const Left = styled.div`
 const Title = styled.h1`
   font-size: 74px;
 
+  @media only screen and (max-width: 1024px) {
+    font-size: 52px;
+  }
+
   @media only screen and (max-width: 768px) {
     text-align: center;
   }
@@ -70,6 +77,9 @@ const Subtitle = styled.h2`
 const Desc = styled.p`
   font-size: 24px;
   color: lightgray;
+  @media only screen and (max-width: 1024px) {
+    font-size: 20px;
+  }
   @media only screen and (max-width: 768px) {
     padding: 20px;
     text-align: center;
@@ -80,10 +90,11 @@ const Button = styled.button`
   background-color: #57F287;
   color: white;
   font-weight: 500;
-  width: 100px;
-  padding: 10px;
+  font-size: 18px;
+  min-width: 150px;
+  padding: 16px 32px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
 `;
 
@@ -97,8 +108,8 @@ const Right = styled.div`
 `;
 
 const Img = styled.img`
-  width: 800px;
-  height: 600px;
+  width: min(800px, 90%);
+  height: auto;
   object-fit: contain;
   position: absolute;
   top: 0;
@@ -109,8 +120,7 @@ const Img = styled.img`
   animation: animate 2s infinite ease alternate;
 
   @media only screen and (max-width: 768px) {
-    width: 300px;
-    height: 300px;
+    width: min(300px, 80%);
   }
 
   @keyframes animate {
@@ -122,7 +132,7 @@ const Img = styled.img`
 
 const Hero = () => {
   return (
-    <Section>
+    <Section id="home">
       <Navbar />
       <Container>
         <Left>
@@ -139,7 +149,7 @@ const Hero = () => {
         <Right>
           <Canvas>
             <Suspense fallback={null}>
-              <OrbitControls enableZoom={false} />
+              <OrbitControls enableZoom={false} touches={{ ONE: null, TWO: null }} />
               <ambientLight intensity={1} />
               <directionalLight position={[3, 2, 1]} />
               <Sphere args={[1, 100, 200]} scale={2.4}>

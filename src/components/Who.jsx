@@ -5,16 +5,20 @@ import { Canvas } from "@react-three/fiber";
 import Cube from "./Cube";
 
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
 `;
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: center;
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
 `;
@@ -30,8 +34,12 @@ const Left = styled.div`
 const Title = styled.h1`
   font-size: 74px;
 
+  @media only screen and (max-width: 1024px) {
+    font-size: 48px;
+  }
+
   @media only screen and (max-width: 768px) {
-    font-size: 60px;
+    font-size: 40px;
   }
 `;
 
@@ -65,22 +73,27 @@ const Subtitle = styled.h2`
 const Desc = styled.p`
   font-size: 24px;
   color: lightgray;
+
+  @media only screen and (max-width: 1024px) {
+    font-size: 20px;
+  }
 `;
 
 const Button = styled.button`
   background-color: #57F287;
   color: white;
   font-weight: 500;
-  width: 120px;
-  padding: 10px;
+  font-size: 18px;
+  min-width: 170px;
+  padding: 16px 32px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
 `;
 
 const Who = () => {
   return (
-    <Section>
+    <Section id="studio">
       <Container>
         <Left>
           <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
@@ -88,7 +101,11 @@ const Who = () => {
               <ambientLight intensity={0.5} />
               <directionalLight position={[3, 2, 1]} />
               <Cube />
-              <OrbitControls enableZoom={false} autoRotate />
+              <OrbitControls
+                enableZoom={false}
+                autoRotate
+                touches={{ ONE: null, TWO: null }}
+              />
             </Suspense>
           </Canvas>
         </Left>

@@ -15,7 +15,8 @@ const data = [
 ];
 
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
@@ -26,13 +27,17 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
     flex-direction: column;
+    justify-content: center;
+    gap: 20px;
   }
 `;
 
@@ -55,7 +60,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  font-size: 90px;
+  font-size: min(90px, 6vw);
   font-weight: bold;
   cursor: pointer;
   color: transparent;
@@ -94,12 +99,19 @@ const ListItem = styled.li`
 
 const Right = styled.div`
   flex: 1;
+  min-width: 0;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    height: 50vh;
+    min-height: 320px;
+  }
 `;
 
 const Works = () => {
   const [work, setWork] = useState("Web Design");
   return (
-    <Section>
+    <Section id="works">
       <Container>
         <Left>
           <List>

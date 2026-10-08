@@ -3,14 +3,12 @@ import { OrbitControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Paris from "./Paris";
 import styled from "styled-components";
+import DescCard from "./DescCard";
+import { asset } from "../assets";
 
-const Desc = styled.div`
-  width: 200px;
-  height: 70px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
+const Desc = styled(DescCard)`
   position: absolute;
+  width: min(340px, calc(100vw - 48px));
   bottom: 200px;
   right: 100px;
 
@@ -28,10 +26,14 @@ const ProductDesign = () => {
     <>
       <Canvas>
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6}>
+          <Stage environment={{ files: asset("potsdamer_platz_1k.hdr") }} intensity={0.6}>
             <Paris />
           </Stage>
-          <OrbitControls enableZoom={false} autoRotate />
+          <OrbitControls
+            enableZoom={false}
+            autoRotate
+            touches={{ ONE: null, TWO: null }}
+          />
         </Suspense>
       </Canvas>
       <Desc>        

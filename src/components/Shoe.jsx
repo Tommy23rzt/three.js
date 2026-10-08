@@ -1,9 +1,10 @@
 import React from "react";
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
+import { asset } from "../assets";
 
 export default function Shoe({ color, ...props }) {
-  const { nodes, materials } = useGLTF("/shoe.gltf");
+  const { nodes, materials } = useGLTF(asset("shoe.gltf"), asset("draco/"));
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -70,4 +71,4 @@ export default function Shoe({ color, ...props }) {
   );
 }
 
-useGLTF.preload("/shoe.gltf");
+useGLTF.preload(asset("shoe.gltf"), asset("draco/"));

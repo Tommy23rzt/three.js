@@ -9,9 +9,10 @@ Title: SOCIAL MEDIA HOLOGRAM
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { asset } from '../assets'
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/socialmedia-transformed.glb')
+  const { nodes, materials } = useGLTF(asset('socialmedia-transformed.glb'), asset('draco/'))
   return (
     <group {...props} dispose={null}>
       <group position={[0.16, 4.91, 3.57]} rotation={[0, Math.PI / 2, 0]} scale={0.24}>
@@ -68,4 +69,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/socialmedia-transformed.glb')
+useGLTF.preload(asset('socialmedia-transformed.glb'), asset('draco/'))

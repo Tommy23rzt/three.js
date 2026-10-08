@@ -9,9 +9,10 @@ Title: PlasmaPurpose - 4th State Of Matter
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { asset } from '../assets'
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/tshirt-transformed.glb')
+  const { nodes, materials } = useGLTF(asset('tshirt-transformed.glb'), asset('draco/'))
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0}>
@@ -26,4 +27,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/tshirt-transformed.glb')
+useGLTF.preload(asset('tshirt-transformed.glb'), asset('draco/'))

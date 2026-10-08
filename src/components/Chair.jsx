@@ -9,9 +9,10 @@ Title: Gaming chair
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { asset } from '../assets'
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/chair-transformed.glb')
+  const { nodes, materials } = useGLTF(asset('chair-transformed.glb'), asset('draco/'))
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.adjustment_aiStandardSurface1_0.geometry} material={materials.aiStandardSurface1} />
@@ -40,4 +41,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/chair-transformed.glb')
+useGLTF.preload(asset('chair-transformed.glb'), asset('draco/'))

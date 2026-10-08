@@ -9,9 +9,10 @@ Title: Paris Saint-Germain x Jordan Home Stadium Kit
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { asset } from '../assets'
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/paris-transformed.glb')
+  const { nodes, materials } = useGLTF(asset('paris-transformed.glb'), asset('draco/'))
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={1.02}>
@@ -31,4 +32,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/paris-transformed.glb')
+useGLTF.preload(asset('paris-transformed.glb'), asset('draco/'))

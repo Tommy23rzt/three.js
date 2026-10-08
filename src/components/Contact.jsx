@@ -4,13 +4,15 @@ import styled from "styled-components";
 import Map from "./Map";
 
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: center;
+  display: flex;
 `;
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 100%;
   display: flex;
   justify-content: space-between;
   gap: 50px;
@@ -18,6 +20,7 @@ const Container = styled.div`
 
 const Left = styled.div`
   flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -31,13 +34,14 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 
   @media only screen and (max-width: 768px) {
-    width: 300px;
+    max-width: 300px;
   }
 `;
 
@@ -60,9 +64,10 @@ const Button = styled.button`
   color: white;
   border: none;
   font-weight: bold;
+  font-size: 20px;
   cursor: pointer;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 22px;
 `;
 
 const Right = styled.div`
@@ -99,7 +104,7 @@ const Contact = () => {
       );
   };
   return (
-    <Section>
+    <Section id="contact">
       <Container>
         <Left>
           <Form ref={ref} onSubmit={handleSubmit}>

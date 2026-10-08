@@ -9,9 +9,10 @@ Title: ( FREE ) Lamborghini Centenario LP-770
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { asset } from '../assets'
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/lambo-transformed.glb')
+  const { nodes, materials } = useGLTF(asset('lambo-transformed.glb'), asset('draco/'))
   return (
     <group {...props} dispose={null}>
       <group rotation={[2.53, 0, Math.PI]} scale={[1, 1.17, 1.17]}>
@@ -59,4 +60,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/lambo-transformed.glb')
+useGLTF.preload(asset('lambo-transformed.glb'), asset('draco/'))
